@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-.clip {
-    clip-path: polygon(0 0, 100% 42%, 100% 100%, 0% 100%);
+.clip-login {
+    clip-path: polygon(0 0, 100% 170px, 100% 100%, 0% 100%);
+}
+
+.clip-register {
+    clip-path: polygon(0 170px, 100% 0, 100% 100%, 0% 100%);
+}
+
+.input:invalid {
+    border-color: red;
+}
+
+.input:valid {
+    border-color: green;
+}
+
+.input:placeholder-shown {
+    border-color: white;
 }
