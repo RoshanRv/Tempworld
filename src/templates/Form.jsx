@@ -4,16 +4,30 @@ import {
     FaLock,
     FaEye,
     FaEyeSlash,
-    FaEyeDropper,
+    FaUser,
+    FaPhoneAlt,
 } from "react-icons/fa"
+import Spinner from "./Spinner"
 
 const Login = ({ showLogin, setShowLogin }) => {
     const [showPassword, setShowPassword] = useState(false)
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
+    const [respMsg, setRespMsg] = useState({
+        msg: "",
+        err: true,
+    })
+
+    const handleLogin = (e) => {
+        e.preventDefault()
+    }
 
     return (
         <form
-            className={` absolute  md:p-10 ${
-                showLogin ? "z-10" : "z-0 top-0"
+            onSubmit={handleLogin}
+            className={` absolute top-1/2 left-1/2 -translate-x-1/2  md:p-10 ${
+                showLogin ? "z-10" : "z-0 "
             } transition-all p-6 bg-gradient-to-tr from-emerald-300 to-emerald-700 w-11/12 md:w-8/12 lg:w-6/12 text-left clip-login text-white text-lg`}
         >
             <h1
@@ -29,7 +43,10 @@ const Login = ({ showLogin, setShowLogin }) => {
                     <input
                         type="email"
                         placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         className="w-full border-b-2 border-white bg-transparent p-1 pl-10 placeholder:text-white/80 outline-none input"
+                        spellCheck={false}
                         required
                     />
                 </div>
@@ -39,13 +56,15 @@ const Login = ({ showLogin, setShowLogin }) => {
                     <input
                         type={showPassword ? "text" : "password"}
                         placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         className="w-full border-b-2 border-white bg-transparent p-1 pl-10 placeholder:text-white/80 outline-none input"
-                        // pattern="[.]{8,20}"
                         minLength={5}
                         maxLength={20}
-                        title="Must Contain Atleast 8 Characters"
+                        title="Must Contain Atleast 5 Characters"
                         required
                     />
+                    {/*         Show & Hide Password Button */}
                     {showPassword ? (
                         <FaEyeSlash
                             onClick={() => setShowPassword(false)}
@@ -58,12 +77,25 @@ const Login = ({ showLogin, setShowLogin }) => {
                         />
                     )}
                 </div>
-                {/*     Login Button  */}
-                <div className="flex mt-6 justify-between items-center">
+
+                {/* Error Msg && Loading */}
+                {respMsg.msg && (
+                    <div
+                        className={`p-1 text-center font-bold ${
+                            respMsg.err ? "bg-red-500" : "bg-green-400"
+                        }`}
+                    >
+                        <h1>{respMsg.msg}</h1>
+                    </div>
+                )}
+                {isLoading && <Spinner />}
+
+                {/*   Submit  Login Button  */}
+                <div className="flex mt-4 justify-between items-center">
                     <input
                         type={"submit"}
                         value="LOGIN"
-                        className="px-8 md:px-20 py-2 bg-yellow-400 text-emerald-800 font-bold"
+                        className="px-8 md:px-20 py-2 bg-yellow-400 text-emerald-800 font-bold cursor-pointer"
                     />
 
                     <h1 className="text-white/70 italic hover:text-white hover:underline underline-offset-8 transition-colors cursor-pointer">
@@ -76,9 +108,33 @@ const Login = ({ showLogin, setShowLogin }) => {
 }
 
 const Register = ({ showLogin, setShowLogin }) => {
+    const [showPassword, setShowPassword] = useState(false)
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+    const [username, setUsername] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
+    const [phone, setPhone] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
+    const [respMsg, setRespMsg] = useState({
+        msg: "",
+        err: false,
+    })
+
+    const handleRegister = (e) => {
+        if (password !== confirmPassword) {
+            setRespMsg({ msg: "Password Doesn't Match", err: true })
+            setTimeout(() => {
+                setRespMsg({ msg: "", err: false })
+            }, 2000)
+        } else {
+            e.preventDefault()
+        }
+    }
     return (
         <form
-            className={`  z-0 md:p-10 ${
+            onSubmit={handleRegister}
+            className={` absolute top-1/2 left-1/2 -translate-x-1/2 z-0 md:p-10 ${
                 !showLogin ? "z-10 " : "z-0  "
             } transition-all p-6 bg-gradient-to-tl from-yellow-300 to-yellow-700 w-11/12 md:w-8/12 lg:w-6/12 text-left clip-register text-white text-lg`}
         >
@@ -89,32 +145,121 @@ const Register = ({ showLogin, setShowLogin }) => {
                 REGISTER
             </h1>
             <div className="mt-10 flex flex-col gap-y-6">
+                {/*     Username    */}
+                <div className="relative ">
+                    <FaUser className="absolute bottom-1/2 translate-y-1/2" />
+                    <input
+                        type="text"
+                        placeholder="Username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        className="w-full border-b-2 border-white bg-transparent p-1 pl-10 placeholder:text-white/80 outline-none input"
+                        spellCheck={false}
+                        minLength={3}
+                        required
+                    />
+                </div>
                 {/*     Email    */}
-                <div className="relative">
+                <div className="relative ">
                     <FaEnvelope className="absolute bottom-1/2 translate-y-1/2" />
                     <input
                         type="email"
                         placeholder="Email"
-                        className="w-full border-b-2 border-white bg-transparent p-1 pl-10 placeholder:text-white/80 outline-none"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="w-full border-b-2 border-white bg-transparent p-1 pl-10 placeholder:text-white/80 outline-none input"
+                        spellCheck={false}
+                        required
                     />
                 </div>
                 {/*     Password    */}
                 <div className="relative">
                     <FaLock className="absolute bottom-1/2 translate-y-1/2" />
                     <input
-                        type="password"
+                        type={showPassword ? "text" : "password"}
                         placeholder="Password"
-                        className="w-full border-b-2 border-white bg-transparent p-1 pl-10 placeholder:text-white/80 outline-none"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        className="w-full border-b-2 border-white bg-transparent p-1 pl-10 placeholder:text-white/80 outline-none input"
+                        minLength={5}
+                        maxLength={20}
+                        title="Must Contain Atleast 5 Characters"
+                        required
+                    />
+                    {/*         Show & Hide Password Button */}
+                    {showPassword ? (
+                        <FaEyeSlash
+                            onClick={() => setShowPassword(false)}
+                            className={`absolute bottom-1/2 translate-y-1/2 right-0 cursor-pointer`}
+                        />
+                    ) : (
+                        <FaEye
+                            onClick={() => setShowPassword(true)}
+                            className={`absolute bottom-1/2 translate-y-1/2 right-0 cursor-pointer`}
+                        />
+                    )}
+                </div>
+
+                {/*    Confirm Password    */}
+                <div className="relative">
+                    <FaLock className="absolute bottom-1/2 translate-y-1/2" />
+                    <input
+                        type={showConfirmPassword ? "text" : "password"}
+                        placeholder="Confirm Password"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        className="w-full border-b-2 border-white bg-transparent p-1 pl-10 placeholder:text-white/80 outline-none input"
+                        minLength={5}
+                        maxLength={20}
+                        title="Must Contain Atleast 5 Characters"
+                        required
+                    />
+                    {/*         Show & Hide Password Button */}
+                    {showConfirmPassword ? (
+                        <FaEyeSlash
+                            onClick={() => setShowConfirmPassword(false)}
+                            className={`absolute bottom-1/2 translate-y-1/2 right-0 cursor-pointer`}
+                        />
+                    ) : (
+                        <FaEye
+                            onClick={() => setShowConfirmPassword(true)}
+                            className={`absolute bottom-1/2 translate-y-1/2 right-0 cursor-pointer`}
+                        />
+                    )}
+                </div>
+
+                {/*     Phone    */}
+                <div className="relative">
+                    <FaPhoneAlt className="absolute bottom-1/2 translate-y-1/2" />
+                    <input
+                        type="tel"
+                        placeholder="Phone"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        className="w-full border-b-2 border-white bg-transparent p-1 pl-10 placeholder:text-white/80 outline-none input"
+                        required
                     />
                 </div>
-                {/*     Register Button  */}
-                <div className="flex mt-6 justify-end  items-center">
-                    <button className="px-8 md:px-20 py-2 bg-emerald-500 text-yellow-900 font-bold">
-                        REGISTER
-                    </button>
-                    {/* <h1 className="text-white/70 italic hover:text-white hover:underline underline-offset-8 transition-colors cursor-pointer">
-                            Forgot Password?
-                        </h1> */}
+
+                {/* Error Msg && Loading */}
+                {respMsg.msg && (
+                    <div
+                        className={`p-1 text-center font-bold ${
+                            respMsg.err ? "bg-red-500" : "bg-green-400"
+                        }`}
+                    >
+                        <h1>{respMsg.msg}</h1>
+                    </div>
+                )}
+                {isLoading && <Spinner />}
+
+                {/*   Submit  Login Button  */}
+                <div className="flex mt-4 justify-end items-center">
+                    <input
+                        type={"submit"}
+                        value="REGISTER"
+                        className="px-8 md:px-20 py-2 bg-emerald-500 text-yellow-700 font-bold cursor-pointer"
+                    />
                 </div>
             </div>
         </form>
@@ -130,7 +275,6 @@ const Form = () => {
             <div className="flex justify-center items-center relative w-full ">
                 <Login showLogin={showLogin} setShowLogin={setShowLogin} />
                 <Register showLogin={showLogin} setShowLogin={setShowLogin} />
-                {/*     box     */}
             </div>
         </main>
     )
