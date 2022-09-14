@@ -123,6 +123,7 @@ const Register = ({ showLogin, setShowLogin }) => {
 
     const handleRegister = (e) => {
         if (password !== confirmPassword) {
+            e.preventDefault()
             setRespMsg({ msg: "Password Doesn't Match", err: true })
             setTimeout(() => {
                 setRespMsg({ msg: "", err: false })
@@ -173,74 +174,81 @@ const Register = ({ showLogin, setShowLogin }) => {
                     />
                 </div>
                 {/*     Password    */}
-                <div className="relative">
-                    <FaLock className="absolute bottom-1/2 translate-y-1/2" />
-                    <input
-                        type={showPassword ? "text" : "password"}
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        className="w-full border-b-2 border-white bg-transparent p-1 pl-10 placeholder:text-white/80 outline-none input"
-                        minLength={5}
-                        maxLength={20}
-                        title="Must Contain Atleast 5 Characters"
-                        required
-                    />
-                    {/*         Show & Hide Password Button */}
-                    {showPassword ? (
-                        <FaEyeSlash
-                            onClick={() => setShowPassword(false)}
-                            className={`absolute bottom-1/2 translate-y-1/2 right-0 cursor-pointer`}
-                        />
-                    ) : (
-                        <FaEye
-                            onClick={() => setShowPassword(true)}
-                            className={`absolute bottom-1/2 translate-y-1/2 right-0 cursor-pointer`}
-                        />
-                    )}
-                </div>
+                {!showLogin && (
+                    <>
+                        <div className="relative">
+                            <FaLock className="absolute bottom-1/2 translate-y-1/2" />
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                placeholder="Password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="w-full border-b-2 border-white bg-transparent p-1 pl-10 placeholder:text-white/80 outline-none input"
+                                minLength={5}
+                                maxLength={20}
+                                title="Must Contain Atleast 5 Characters"
+                                required
+                            />
+                            {/*         Show & Hide Password Button */}
+                            {showPassword ? (
+                                <FaEyeSlash
+                                    onClick={() => setShowPassword(false)}
+                                    className={`absolute bottom-1/2 translate-y-1/2 right-0 cursor-pointer`}
+                                />
+                            ) : (
+                                <FaEye
+                                    onClick={() => setShowPassword(true)}
+                                    className={`absolute bottom-1/2 translate-y-1/2 right-0 cursor-pointer`}
+                                />
+                            )}
+                        </div>
 
-                {/*    Confirm Password    */}
-                <div className="relative">
-                    <FaLock className="absolute bottom-1/2 translate-y-1/2" />
-                    <input
-                        type={showConfirmPassword ? "text" : "password"}
-                        placeholder="Confirm Password"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        className="w-full border-b-2 border-white bg-transparent p-1 pl-10 placeholder:text-white/80 outline-none input"
-                        minLength={5}
-                        maxLength={20}
-                        title="Must Contain Atleast 5 Characters"
-                        required
-                    />
-                    {/*         Show & Hide Password Button */}
-                    {showConfirmPassword ? (
-                        <FaEyeSlash
-                            onClick={() => setShowConfirmPassword(false)}
-                            className={`absolute bottom-1/2 translate-y-1/2 right-0 cursor-pointer`}
-                        />
-                    ) : (
-                        <FaEye
-                            onClick={() => setShowConfirmPassword(true)}
-                            className={`absolute bottom-1/2 translate-y-1/2 right-0 cursor-pointer`}
-                        />
-                    )}
-                </div>
+                        {/*    Confirm Password    */}
+                        <div className="relative">
+                            <FaLock className="absolute bottom-1/2 translate-y-1/2" />
+                            <input
+                                type={showConfirmPassword ? "text" : "password"}
+                                placeholder="Confirm Password"
+                                value={confirmPassword}
+                                onChange={(e) =>
+                                    setConfirmPassword(e.target.value)
+                                }
+                                className="w-full border-b-2 border-white bg-transparent p-1 pl-10 placeholder:text-white/80 outline-none input"
+                                minLength={5}
+                                maxLength={20}
+                                title="Must Contain Atleast 5 Characters"
+                                required
+                            />
+                            {/*         Show & Hide Password Button */}
+                            {showConfirmPassword ? (
+                                <FaEyeSlash
+                                    onClick={() =>
+                                        setShowConfirmPassword(false)
+                                    }
+                                    className={`absolute bottom-1/2 translate-y-1/2 right-0 cursor-pointer`}
+                                />
+                            ) : (
+                                <FaEye
+                                    onClick={() => setShowConfirmPassword(true)}
+                                    className={`absolute bottom-1/2 translate-y-1/2 right-0 cursor-pointer`}
+                                />
+                            )}
+                        </div>
 
-                {/*     Phone    */}
-                <div className="relative">
-                    <FaPhoneAlt className="absolute bottom-1/2 translate-y-1/2" />
-                    <input
-                        type="tel"
-                        placeholder="Phone"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        className="w-full border-b-2 border-white bg-transparent p-1 pl-10 placeholder:text-white/80 outline-none input"
-                        required
-                    />
-                </div>
-
+                        {/*     Phone    */}
+                        <div className="relative">
+                            <FaPhoneAlt className="absolute bottom-1/2 translate-y-1/2" />
+                            <input
+                                type="tel"
+                                placeholder="Phone"
+                                value={phone}
+                                onChange={(e) => setPhone(e.target.value)}
+                                className="w-full border-b-2 border-white bg-transparent p-1 pl-10 placeholder:text-white/80 outline-none input"
+                                required
+                            />
+                        </div>
+                    </>
+                )}
                 {/* Error Msg && Loading */}
                 {respMsg.msg && (
                     <div
