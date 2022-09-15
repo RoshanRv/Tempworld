@@ -7,7 +7,8 @@ import {
     FaUser,
     FaPhoneAlt,
 } from "react-icons/fa"
-import Spinner from "./Spinner"
+import Spinner from "../Spinner"
+import "./style.css"
 
 const Login = ({ showLogin, setShowLogin }) => {
     const [showPassword, setShowPassword] = useState(false)

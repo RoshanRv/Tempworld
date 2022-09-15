@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
-import Form from "./templates/Form"
+import Form from "./templates/Form/Form"
 
 function App() {
     return (
