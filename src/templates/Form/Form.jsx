@@ -279,7 +279,7 @@ const Form = () => {
     const [showLogin, setShowLogin] = useState(true)
 
     return (
-        <main className="bg-gray-800 w-full min-h-screen  py-28">
+        <main className="bg-gradient-to-br from-gray-900 to-gray-700 w-full min-h-screen  py-28">
             {/*     box     */}
             <div className="flex justify-center items-center relative w-full ">
                 <Login showLogin={showLogin} setShowLogin={setShowLogin} />
