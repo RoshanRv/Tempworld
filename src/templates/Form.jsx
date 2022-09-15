@@ -28,7 +28,7 @@ const Login = ({ showLogin, setShowLogin }) => {
             onSubmit={handleLogin}
             className={` absolute top-1/2 left-1/2 -translate-x-1/2  md:p-10 ${
                 showLogin ? "z-10" : "z-0 "
-            } transition-all p-6 bg-gradient-to-tr from-emerald-300 to-emerald-700 w-11/12 md:w-8/12 lg:w-6/12 text-left clip-login text-white text-lg`}
+            } transition-all p-6 bg-gradient-to-tr from-lPri to-dPri w-11/12 md:w-8/12 lg:w-6/12 text-left clip-login text-white text-lg`}
         >
             <h1
                 onClick={() => setShowLogin(true)}
@@ -95,7 +95,7 @@ const Login = ({ showLogin, setShowLogin }) => {
                     <input
                         type={"submit"}
                         value="LOGIN"
-                        className="px-8 md:px-20 py-2 bg-yellow-400 text-emerald-800 font-bold cursor-pointer"
+                        className="px-8 md:px-20 py-2 bg-gradient-to-br from-dSec to-lSec text-dPri font-bold cursor-pointer"
                     />
 
                     <h1 className="text-white/70 italic hover:text-white hover:underline underline-offset-8 transition-colors cursor-pointer">
@@ -137,7 +137,7 @@ const Register = ({ showLogin, setShowLogin }) => {
             onSubmit={handleRegister}
             className={` absolute top-1/2 left-1/2 -translate-x-1/2 z-0 md:p-10 ${
                 !showLogin ? "z-10 " : "z-0  "
-            } transition-all p-6 bg-gradient-to-tl from-yellow-300 to-yellow-700 w-11/12 md:w-8/12 lg:w-6/12 text-left clip-register text-white text-lg`}
+            } transition-all p-6 bg-gradient-to-tl from-lSec to-dSec w-11/12 md:w-8/12 lg:w-6/12 text-left clip-register text-white text-lg`}
         >
             <h1
                 onClick={() => setShowLogin(false)}
@@ -266,7 +266,7 @@ const Register = ({ showLogin, setShowLogin }) => {
                     <input
                         type={"submit"}
                         value="REGISTER"
-                        className="px-8 md:px-20 py-2 bg-emerald-500 text-yellow-700 font-bold cursor-pointer"
+                        className="px-8 md:px-20 py-2 bg-gradient-to-bl from-dPri to-lPri text-dSec font-bold cursor-pointer"
                     />
                 </div>
             </div>
