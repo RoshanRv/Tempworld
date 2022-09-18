@@ -33,7 +33,7 @@ const Login = ({ showLogin, setShowLogin }) => {
         >
             <h1
                 onClick={() => setShowLogin(true)}
-                className="cursor-pointer text-2xl font-bold mt-16"
+                className="cursor-pointer text-xl md:text-2xl font-bold mt-10"
             >
                 LOGIN
             </h1>
@@ -142,7 +142,7 @@ const Register = ({ showLogin, setShowLogin }) => {
         >
             <h1
                 onClick={() => setShowLogin(false)}
-                className="cursor-pointer text-2xl font-bold mt-16 text-right"
+                className="cursor-pointer text-xl md:text-2xl font-bold mt-10 text-right"
             >
                 REGISTER
             </h1>

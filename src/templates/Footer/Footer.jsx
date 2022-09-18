@@ -21,7 +21,7 @@ const Footer = () => {
     // }
 
     return (
-        <footer className="mb-16 w-full font-rale bg-gradient-to-r from-gray-800 to-gray-600  text-white border-t-2  border-white txt-sha text-md  p-2 md:flex items-center justify-around text-center font-disp">
+        <footer className="mb-16 md:mb-0 w-full font-rale bg-gradient-to-r from-gray-800 to-gray-600  text-white border-t-2  border-white txt-sha text-md  p-2 md:flex items-center justify-around text-center font-disp">
             <h1 className="text-">
                 Made With&nbsp;{" "}
                 <FaHeart className="text-red-500 beat inline-block text-md beat -z-10" />{" "}
