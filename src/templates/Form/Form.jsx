@@ -29,7 +29,7 @@ const Login = ({ showLogin, setShowLogin }) => {
             onSubmit={handleLogin}
             className={` absolute top-1/2 left-1/2 -translate-x-1/2  md:p-10 ${
                 showLogin ? "z-10" : "z-0 "
-            } transition-all p-6 bg-gradient-to-tr from-lPri to-dPri w-11/12 md:w-8/12 lg:w-6/12 text-left clip-login text-white text-lg`}
+            } transition-all p-4 bg-gradient-to-tr from-lPri to-dPri w-11/12 md:w-8/12 lg:w-6/12 text-left clip-login text-white text-lg`}
         >
             <h1
                 onClick={() => setShowLogin(true)}
@@ -137,8 +137,8 @@ const Register = ({ showLogin, setShowLogin }) => {
         <form
             onSubmit={handleRegister}
             className={` absolute top-1/2 left-1/2 -translate-x-1/2 z-0 md:p-10 ${
-                !showLogin ? "z-10 " : "z-0  "
-            } transition-all p-6 bg-gradient-to-tl from-lSec to-dSec w-11/12 md:w-8/12 lg:w-6/12 text-left clip-register text-white text-lg`}
+                !showLogin ? "z-20 " : "z-0  "
+            } transition-all p-4 bg-gradient-to-tl from-lSec to-dSec w-11/12 md:w-8/12 lg:w-6/12 text-left clip-register text-white text-lg`}
         >
             <h1
                 onClick={() => setShowLogin(false)}
@@ -279,7 +279,7 @@ const Form = () => {
     const [showLogin, setShowLogin] = useState(true)
 
     return (
-        <main className="bg-gradient-to-br from-gray-900 to-gray-700 w-full min-h-[94.7vh]  py-28">
+        <main className="bg-gradient-to-br from-gray-900 to-gray-700  min-h-[94.7vh] py-28">
             {/*     box     */}
             <div className="flex justify-center items-center relative w-full ">
                 <Login showLogin={showLogin} setShowLogin={setShowLogin} />
