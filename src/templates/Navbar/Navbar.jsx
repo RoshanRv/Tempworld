@@ -24,10 +24,10 @@ const Navbar = () => {
     }
 
     return (
-        <header className="bg-gradient-to-br from-gray-900 to-gray-700 p-2 md:p-3 lg:p-3  border-b border-gray-500">
-            <nav className="flex justify-between items-center">
+        <header className="bg-gradient-to-br from-gray-900 to-gray-700 p-3 md:p-3 lg:p-3  border-b border-gray-500">
+            <nav className="flex justify-between items-center px-4">
                 <Link to={"/"}>
-                    <h1 className="font-black text-3xl uppercase text-white">
+                    <h1 className="font-black text-center text-3xl uppercase text-white">
                         Temporld
                     </h1>
                 </Link>
