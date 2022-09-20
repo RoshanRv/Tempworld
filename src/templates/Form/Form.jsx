@@ -244,7 +244,7 @@ const Register = ({ showLogin, setShowLogin }) => {
                                 placeholder="Phone"
                                 value={phone}
                                 onChange={(e) => setPhone(e.target.value)}
-                                className="w-full border-b-2 border-white bg-transparent p-1 pl-10 placeholder:text-white/80 outline-none input"
+                                className="w-full border-b-2 border-white bg-transparent p-1 pl-10 placeholder:text-white/80 outline-none input "
                                 required
                             />
                         </div>
