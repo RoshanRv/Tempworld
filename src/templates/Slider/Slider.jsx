@@ -3,14 +3,15 @@ import { FaAngleLeft, FaAngleRight } from "react-icons/fa"
 
 const Slider = () => {
     const [slideIndex, setSlideIndex] = useState(0)
+    const arrData = [1, 2, 3]
 
     const handleNext = () => {
-        if (slideIndex >= 2) return setSlideIndex(0)
+        if (slideIndex >= arrData.length - 1) return setSlideIndex(0)
         return setSlideIndex((e) => e + 1)
     }
 
     const handlePrevious = () => {
-        if (slideIndex <= 0) return setSlideIndex(2)
+        if (slideIndex <= 0) return setSlideIndex(arrData.length - 1)
         return setSlideIndex((e) => e - 1)
     }
 
