@@ -22,8 +22,8 @@ const Slider = () => {
                     className="flex w-max  transition-all duration-700"
                     style={{ transform: `translateX(${-slideIndex * 100}vw)` }}
                 >
-                    {[1, 2, 3].map((data, i) => (
-                        <div key={i} className="w-screen h-[50rem] ">
+                    {arrData.map((data, i) => (
+                        <div key={i} className="w-screen h-[80vh] md:h-[60vh]">
                             <img
                                 src={require(`./assets/${data}.jpeg`)}
                                 className="w-full h-full lg:object-fill object-center object-cover"
@@ -34,17 +34,17 @@ const Slider = () => {
             </section>
             {/* left */}
             <button
-                className="z-50 absolute top-1/2  -translate-y-1/2 md:left-10 left-4"
+                className="z-50 absolute top-1/2  -translate-y-1/2 md:left-10 left-4  outline-none"
                 onClick={() => handlePrevious()}
             >
-                <FaAngleLeft className="w-12 text-white h-12 rounded-full bg-black/20 p-2 z-50 px-2" />
+                <FaAngleLeft className="w-12 text-white h-12 rounded-full bg-black/20 p-2 z-50 px-2  " />
             </button>
             {/* right */}
             <button
-                className="z-50 absolute top-1/2 -translate-y-1/2 md:right-10 right-4"
+                className="z-50 absolute top-1/2 -translate-y-1/2 md:right-10 right-4 outline-none"
                 onClick={() => handleNext()}
             >
-                <FaAngleRight className="w-12 text-white h-12 rounded-full bg-black/20 p-2 z-50 px-2" />
+                <FaAngleRight className="w-12 text-white h-12 rounded-full bg-black/20 p-2 z-50 px-2  " />
             </button>
         </section>
     )
