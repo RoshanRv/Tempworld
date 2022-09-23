@@ -17,6 +17,7 @@ const MiniSlider = () => {
 
     return (
         <main className="min-h-[85vh] flex flex-col justify-center items-center">
+            {/*            TEMP           */}
             <section className="w-full h-full relative bg-black p-6 py-20">
                 <section className="w-full flex overflow-hidden ">
                     <div
@@ -59,6 +60,7 @@ const MiniSlider = () => {
                     <FaAngleRight className="w-12 text-white h-12 rounded-full bg-black/20 p-2 z-50 px-2  " />
                 </button>
             </section>
+            {/*        TEMP END      */}
         </main>
     )
 }
