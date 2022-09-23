@@ -1,0 +1,9 @@
+:root {
+    --gap: 5rem;
+}
+
+@media (max-width: 760px) {
+    :root {
+        --gap: 2.5rem;
+    }
+}
