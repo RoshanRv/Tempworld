@@ -37,7 +37,7 @@ const Modal = () => {
                     >
                         <AiOutlineClose className="font-bold p-2 text-4xl rounded-full bg-black text-white" />
                     </button>
-                    {/*         box content     */}
+                    {/*         box content      */}
                     <h1 className="text-2xl font-bold text-center">
                         Close Modal ?
                     </h1>
